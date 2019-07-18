@@ -2,7 +2,7 @@
     <div class="login">
         <el-form ref="form" :model="form">
             <div class="headerPic">
-                <img src="../assets/touxiang.gif"/>
+                <img src="../assets/images/touxiang.gif"/>
             </div>
             <el-form-item>
                 <el-input v-model="form.userName" placeholder="账号"></el-input>
