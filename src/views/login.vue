@@ -1,16 +1,16 @@
 <template>
     <div class="login">
-        <el-form ref="form" :model="form">
+        <el-form ref="form" :model="form" :rules="rules">
             <div class="headerPic">
                 <img src="../assets/images/touxiang.gif"/>
             </div>
-            <el-form-item>
+            <el-form-item prop="userName">
                 <el-input v-model="form.userName" placeholder="账号"></el-input>
             </el-form-item>
-            <el-form-item>
+            <el-form-item prop="password">
                 <el-input type="password" v-model="form.password" placeholder="密码"></el-input>
             </el-form-item>
-            <el-button type="primary" style="width: 100%;">登录</el-button>
+            <el-button type="primary" style="width: 100%;" @click="loginForm('ruleForm')">登录</el-button>
         </el-form>
     </div>
 </template>
@@ -22,10 +22,36 @@
                 form: {
                     userName: "",
                     password: ""
+                },
+                rules: {
+                    userName: [
+                        {required: true, message: '请输入用户名称', trigger: 'blur'},
+                        {min: 5, max: 20, message: '账号长度在 5 到 20 个字符', trigger: 'blur'}
+                    ],
+                    password: [
+                        {required: true, message: '请输入用户密码', trigger: 'blur'},
+                        {min: 5, max: 20, message: '密码长度在 5 到 20 个字符', trigger: 'blur'}
+                    ]
                 }
             }
         },
-        methods: {},
+        methods: {
+            loginForm(){
+                this.$refs.form.validate(flag=>{
+                    if (flag) {
+                        if (this.form.userName === 'admin' && this.form.password === '123456') {
+                            this.$message({
+                                message: '登录成功!',
+                                type: 'success'
+                            });
+                            this.$router.push("/home");
+                        }else {
+                            this.$message.error('账号密码错误!');
+                        }
+                    }
+                })
+            }
+        },
         created() {
 
         }
