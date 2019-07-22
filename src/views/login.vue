@@ -20,8 +20,8 @@
         data() {
             return {
                 form: {
-                    userName: "",
-                    password: ""
+                    userName: "admin",
+                    password: "123456"
                 },
                 rules: {
                     userName: [
