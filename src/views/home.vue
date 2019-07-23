@@ -35,7 +35,12 @@
         data() {
 
         },
-        methods: {}
+        methods: {
+            getMenus(){
+
+            }
+
+        }
     };
 </script>
 

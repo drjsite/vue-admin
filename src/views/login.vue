@@ -39,15 +39,18 @@
             loginForm(){
                 this.$refs.form.validate(flag=>{
                     if (flag) {
-                        if (this.form.userName === 'admin' && this.form.password === '123456') {
-                            this.$message({
-                                message: '登录成功!',
-                                type: 'success'
-                            });
-                            this.$router.push("/home");
-                        }else {
-                            this.$message.error('账号密码错误!');
-                        }
+                        this.axios.post("login",this.form).then(resp=>{
+                            if (resp.data.code === 200) {
+                                this.$message({
+                                    message: '登录成功!',
+                                    type: 'success'
+                                });
+                                this.$router.push("/home");
+                            }else {
+                                this.$message.error('账号密码错误!');
+                            }
+
+                        });
                     }
                 })
             }
