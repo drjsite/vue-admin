@@ -1,7 +1,7 @@
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 
-import {LoginUsers} from './data/user'
+import {UserList} from './data/user'
 
 export default {
 
@@ -10,7 +10,7 @@ export default {
         mock.onPost('/login').reply(arg => {
             let {userName, password} = JSON.parse(arg.data);
             return new Promise((resolve) => {
-                let hasUser = LoginUsers.some(u => {
+                let hasUser = UserList.some(u => {
                     if (u.username === userName && u.password === password) {
                         return true
                     }
