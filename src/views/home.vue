@@ -9,12 +9,12 @@
                          text-color="#fff"
                          active-text-color="yellow"
                 >
-                    <el-submenu index="1">
+                    <el-submenu :index="index+''" :key="menu.id" v-for="(menu,index) in menuList">
                         <template slot="title">
-                            <i class="el-icon-user"></i>
-                            <span>用户管理</span>
+                            <i :class="'el-icon-' + menu.icon"></i>
+                            <span>{{menu.name}}</span>
                         </template>
-                        <el-menu-item index="1-4-1"><i class="el-icon-menu"></i> 用户列表</el-menu-item>
+                        <el-menu-item :key="menuItem.id" v-for="menuItem in menu.child" index="1-4-1"><i :class="'el-icon-' + menuItem.icon"></i> {{menuItem.name}}</el-menu-item>
                     </el-submenu>
                 </el-menu>
             </el-aside>
@@ -33,13 +33,19 @@
 <script>
     export default {
         data() {
-
+            return {
+                menuList: []
+            }
         },
         methods: {
-            getMenus(){
-
+            getMenus() {
+                this.axios.post("menus").then(resp => {
+                    this.menuList=resp.data;
+                })
             }
-
+        },
+        created() {
+            this.getMenus();
         }
     };
 </script>
