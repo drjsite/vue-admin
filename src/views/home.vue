@@ -8,13 +8,16 @@
                          background-color="#545c64"
                          text-color="#fff"
                          active-text-color="yellow"
+                         :router="true"
                 >
                     <el-submenu :index="index+''" :key="menu.id" v-for="(menu,index) in menuList">
                         <template slot="title">
                             <i :class="'el-icon-' + menu.icon"></i>
                             <span>{{menu.name}}</span>
                         </template>
-                        <el-menu-item :key="menuItem.id" v-for="menuItem in menu.child" index="1-4-1"><i :class="'el-icon-' + menuItem.icon"></i> {{menuItem.name}}</el-menu-item>
+                        <el-menu-item :key="menuItem.id" v-for="menuItem in menu.child" :index="'/home'+menuItem.path">
+                            <i :class="'el-icon-' + menuItem.icon"></i>{{menuItem.name}}
+                        </el-menu-item>
                     </el-submenu>
                 </el-menu>
             </el-aside>
@@ -24,7 +27,9 @@
                     <h3>北塔后台管理系统</h3>
                     <div>您好,dongrj <span>退出</span></div>
                 </el-header>
-                <el-main>Main</el-main>
+                <el-main>
+                    <router-view></router-view>
+                </el-main>
             </el-container>
         </el-container>
     </div>

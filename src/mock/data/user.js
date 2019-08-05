@@ -13,7 +13,7 @@ const MenuList = [
         child: [{
             id: 100001,
             name: "用户列表",
-            path: "/userList",
+            path: "/userlist",
             icon:"user",
         }]
     },
@@ -25,7 +25,7 @@ const MenuList = [
         child: [{
             id: 101001,
             name: "菜单列表",
-            path: "/menuList",
+            path: "/menulist",
             icon:"menu"
         }]
     }
