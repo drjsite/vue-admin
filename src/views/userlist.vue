@@ -6,7 +6,7 @@
             <el-breadcrumb-item>用户列表</el-breadcrumb-item>
         </el-breadcrumb>
         <div class="search">
-            <el-input placeholder="请输入内容" v-model="input5" class="input-with-select">
+            <el-input placeholder="请输入内容" class="input-with-select">
                 <el-button slot="append" icon="el-icon-search"></el-button>
             </el-input>
             <el-button type="success" plain>成功按钮</el-button>
@@ -16,6 +16,13 @@
                     :data="tableData"
                     border
                     style="width: 100%">
+
+                <el-table-column
+                        type="index"
+                        width="50">
+                </el-table-column>
+
+
                 <el-table-column
                         prop="date"
                         label="日期"
@@ -29,6 +36,23 @@
                 <el-table-column
                         prop="address"
                         label="地址">
+                </el-table-column>
+                <el-table-column
+                        prop="address"
+                        label="用户状态">
+                    <el-switch
+                            active-color="#13ce66"
+                            inactive-color="#ff4949">
+                    </el-switch>
+
+                </el-table-column>
+
+                <el-table-column
+                        prop="address"
+                        label="操作">
+                    <el-button type="primary" icon="el-icon-edit" circle></el-button>
+                    <el-button type="danger" icon="el-icon-delete" circle></el-button>
+                    <el-button type="success" icon="el-icon-check" circle></el-button>
                 </el-table-column>
             </el-table>
         </template>
